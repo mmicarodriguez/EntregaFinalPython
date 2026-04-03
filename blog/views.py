@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 class PageListView(ListView):
     model = Page
@@ -18,7 +19,8 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
     fields = ['titulo', 'subtitulo', 'contenido', 'imagen', 'fecha']
     template_name = 'blog/page_form.html'
     success_url = reverse_lazy('pages')
-
+    
+@login_required
 def home(request):
     return render(request, 'blog/home.html')
 
