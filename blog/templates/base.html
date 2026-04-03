@@ -14,8 +14,9 @@
     <a href="/pages/">Pages</a>
     <a href="/about/">About</a>
     <a href="/mensaje/">Mensajes</a>
-    <a href="/login/">Login</a>
     <a href="/accounts/profile/">Profile</a>
+    <a href="/login/">Login</a>
+    <a href="{% url 'signup' %}">Signup</a>
     <form action="{% url 'logout' %}" method="post" style="display:inline;">
     {% csrf_token %}
     <button type="submit">Logout</button>
