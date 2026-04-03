@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Mis páginas</h1>
+
+<a href="{% url 'create' %}">Crear página</a>
+
+{% if object_list %}
+    {% for page in object_list %}
+    <div>
+        <h2>{{ page.titulo }}</h2>
+        <p>{{ page.subtitulo }}</p>
+
+        {% if page.imagen %}
+            <img src="{{ page.imagen.url }}" width="200">
+        {% endif %}
+
+        <a href="{% url 'detail' page.id %}">Leer más</a>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No hay páginas aún</p>
+{% endif %}
+
+{% endblock %}
+
+        <a href="{% url 'mensaje' %}">Enviar mensaje</a>
